@@ -6,53 +6,24 @@ void control() {
 	while(true) {
 
 		//Drive
-		if (vexRT[Btn6D] || vexRT[Btn6U]) slowDrive = true;
+		if (vexRT[Btn7D] || vexRT[Btn7L] || vexRT[Btn7U] || vexRT[Btn7R] || 
+			vexRT[Btn8D] || vexRT[Btn8L] || vexRT[Btn8U] || vexRT[Btn8R]) slowDrive = true;
 		else slowDrive = false;
 
-		basicDrive(
+		basicDrive( //ternary operator, if slowDrive is true, power is divided by 2.2
 			slowDrive ? (vexRT[Ch3] / 2.2) : vexRT[Ch3],
 			slowDrive ? (vexRT[Ch2] / 2.2) : vexRT[Ch2]
 			);
 
-		//// Vertical Intake
-		//if (vexRT[Btn5U]) {
-		//	basicVerticalIntake(127);
-		//}
-		//else if (vexRT[Btn5D]){
-		//	basicVerticalIntake(-127);
-		//}
-		//else if (abs(vexRT[Ch3Xmtr2]) >= 10) {
-		//	basicVerticalIntake(vexRT[Ch3Xmtr2]);
-		//}
-		//else basicVerticalIntake(0);
+		//Intake (Horizontal and Vertical)
+		if (vexRT[Btn6U]) basicBothIntake(127);
 
-		//// Horizontal Intake
-		//if (vexRT[Btn6U]) {
-		//	basicHorizontalIntake(127);
-		//}
-		//else if (vexRT[Btn6D]){
-		//	basicHorizontalIntake(-127);
-		//}
-		//else if (abs(vexRT[Ch2Xmtr2]) >= 10) {
-		//	basicHorizontalIntake(vexRT[Ch2Xmtr2]);
-		//}
-		//else basicHorizontalIntake(0);
+		else if (vexRT[Btn6D]) basicBothIntake(-127);
 
-		////Flywheels
-		//if (vexRT[Btn7D] || vexRT[Btn7L] || vexRT[Btn7U] ||
-		//		vexRT[Btn7R] || vexRT[Btn8D] || vexRT[Btn8L] ||
-		//		vexRT[Btn8U] || vexRT[Btn8R]) {
-		//	flywheels(127);
-		//}
-		//else if (vexRT[Btn5UXmtr2] || vexRT[Btn5DXmtr2] || vexRT[Btn6UXmtr2] || vexRT[Btn6DXmtr2]) {
-		//	flywheels(127);
-		//}
-		//else if (vexRT[Btn8DXmtr2]) flywheels(40);
-		//else if (vexRT[Btn8LXmtr2]) flywheels(70);
-		//else if (vexRT[Btn8UXmtr2]) flywheels(100);
-		//else if (vexRT[Btn8RXmtr2]) flywheels(127);
-		//else flywheels(0);
+		else basicBothIntake(0);
 
-		//wait1Msec(10);
+		// Flywheels
+		if (vexRT[Btn5U])  flywheels(127); //rev spin motors
+		else if (vexRT[Btn5D]) flywheels(0);
+
 	}
-}
