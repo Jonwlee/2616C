@@ -1,5 +1,5 @@
 void basicDrive (int leftPower, int rightPower) {
-	// motor[FLDrive] = motor[BLDrive] = leftPower;
+	// motor[FLDrive] = motor[BLDrive] = leftPower; //currently commented out bc we lack y cables
 	// motor[FRDrive] = motor[BRDrive] = rightPower;
 	}
 
