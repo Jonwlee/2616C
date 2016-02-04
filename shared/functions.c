@@ -1,6 +1,6 @@
 void basicDrive (int leftPower, int rightPower) {
-  motor[LDrive] = -leftPower;
-  motor{RDrive] = rightPower;
+  motor[LDrive] = leftPower;
+  motor{RDrive] = -rightPower;
 	}
 
 //void basicHorizontalIntake (int power) {
